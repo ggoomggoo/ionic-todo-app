@@ -1,9 +1,11 @@
 <ion-view view-title="List" ng-controller="ListCtrl">
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate" href="#/edit/{{todo.id}}" ng-repeat="todo in todos">
+      <ion-item class="item-remove-animate item-icon-right" href="#/edit/{{todo.id}}" ng-repeat="todo in todos">
         <h2>{{todo.title}}</h2>
-        <p>{{todo.description}}, {{todo.complete}}</p>
+        <p>{{todo.description}}</p>
+        <i ng-if="!todo.complete" class="icon ion-android-checkbox-outline-blank"></i>
+        <i ng-if="todo.complete" class="icon ion-android-checkbox-outline"></i>
         <ion-options-button class="button-positive ion-trash-a" ng-click="remove(todo.id)">삭제</ion-options-button>
       </ion-item>
     </ion-list>
