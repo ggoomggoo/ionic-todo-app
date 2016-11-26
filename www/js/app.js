@@ -13,7 +13,7 @@ angular.module('mytodos', ['ionic'])
   });
 
   $stateProvider.state('edit', {
-    url: '/edit',
+    url: '/edit/:todoId',
     templateUrl: 'templates/edit.html'
   });
 
@@ -24,21 +24,23 @@ angular.module('mytodos', ['ionic'])
 .controller('ListCtrl', function($scope) {
   $scope.todos = [
     {
-      title: 'title',
+      id: 1,
+      title: 'title1',
       description: 'description',
       complete: false
     },
     {
-      title: 'title',
+      id: 2,
+      title: 'title2',
       description: 'description',
       complete: false
     },
     {
-      title: 'title',
+      id: 3,
+      title: 'title3',
       description: 'description',
       complete: false
     }
-
   ];
 })
 

@@ -1,9 +1,11 @@
-<ion-view>
-  <ion-content ng-controller="ListCtrl">
+<ion-view view-title="List" ng-controller="ListCtrl">
+  <ion-content>
     <div class="list">
       <div class="item" ng-repeat="todo in todos">
-        <h2>{{todo.title}}</h2>
-        <p>{{todo.description}}, {{todo.complete}}</p>
+        <a href="#/edit/{{todo.id}}">
+          <h2>{{todo.title}}</h2>
+          <p>{{todo.description}}, {{todo.complete}}</p>
+        </a>
       </div>
     </div>
   </ion-content>
