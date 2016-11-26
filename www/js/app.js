@@ -28,11 +28,12 @@ angular.module('mytodos', ['ionic'])
 
 .controller('EditCtrl', function($scope, $state) {
   // $scope.todo = getTodo($state.params.todoId); // call by reference
-  debugger;
   $scope.todo = angular.copy(getTodo($state.params.todoId));
 
-  // $scope.save = function() {
-  // };
+  $scope.save = function() {
+    updateTodo($scope.todo);
+    $state.go('list');
+  };
 })
 
 .run(function($ionicPlatform) {

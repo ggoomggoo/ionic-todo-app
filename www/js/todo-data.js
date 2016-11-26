@@ -27,3 +27,12 @@ function getTodo(todoId) {
   }
   return undefined;
 };
+
+function updateTodo(todo) {
+  for (var i = 0; i < todos.length; i++) {
+    if (todos[i].id === todo.id) {
+      todos[i] = todo;
+      return;
+    }
+  }
+};
