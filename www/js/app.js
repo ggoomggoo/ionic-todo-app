@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('mytodos', ['ionic'])
+angular.module('mytodos', ['ionic', 'mytodos.todo-data'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -28,11 +28,11 @@ angular.module('mytodos', ['ionic'])
   $urlRouterProvider.otherwise('/list');
 })
 
-.controller('ListCtrl', function($scope) {
-  $scope.todos = todos;
+.controller('ListCtrl', function($scope, TodoData) {
+  $scope.todos = TodoData.list();
 })
 
-.controller('AddCtrl', function($scope, $state) {
+.controller('AddCtrl', function($scope, $state, TodoData) {
   $scope.todo = {
     id: new Date().getTime().toString(),
     title: '',
@@ -41,17 +41,17 @@ angular.module('mytodos', ['ionic'])
   };
 
   $scope.save = function() {
-    createTodo($scope.todo);
+    TodoData.create($scope.todo);
     $state.go('list');
   }
 })
 
-.controller('EditCtrl', function($scope, $state) {
+.controller('EditCtrl', function($scope, $state, TodoData) {
   // $scope.todo = getTodo($state.params.todoId); // call by reference
-  $scope.todo = angular.copy(getTodo($state.params.todoId));
+  $scope.todo = angular.copy(TodoData.get($state.params.todoId));
 
   $scope.save = function() {
-    updateTodo($scope.todo);
+    TodoData.update($scope.todo);
     $state.go('list');
   };
 })
