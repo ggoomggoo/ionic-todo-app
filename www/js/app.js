@@ -14,7 +14,8 @@ angular.module('mytodos', ['ionic'])
 
   $stateProvider.state('edit', {
     url: '/edit/:todoId',
-    templateUrl: 'templates/edit.html'
+    templateUrl: 'templates/edit.html',
+    controller: 'EditCtrl'
   });
 
   // 설정되지 않은 url 에 대해 설정. default url?
@@ -26,8 +27,9 @@ angular.module('mytodos', ['ionic'])
 })
 
 .controller('EditCtrl', function($scope, $state) {
-  $scope.todo = getTodo($state.params.todoId); // call by reference
-  // $scope.todo = angular.copy(getTodo($state.params.todoId));
+  // $scope.todo = getTodo($state.params.todoId); // call by reference
+  debugger;
+  $scope.todo = angular.copy(getTodo($state.params.todoId));
 
   // $scope.save = function() {
   // };
