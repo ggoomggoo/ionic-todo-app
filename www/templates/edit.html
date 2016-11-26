@@ -1,5 +1,19 @@
 <ion-view view-title="Edit" ng-controller="EditCtrl">
   <ion-content>
-    <h2>{{todoId}}</h2>
+    <div class="list">
+      <div class="item">
+        <input type="text" value="{{todo.title}}">
+        <!--<input type="text" ng-model="{{todo.title}}">-->
+      </div>
+      <div class="item">
+        <textarea name="" id="" cols="30" rows="5">{{todo.description}}</textarea>
+        <!--<textarea rows="5" ng-model="todo.description"></textarea>-->
+      </div>
+      <ion-checkbox>완료</ion-checkbox>
+      <!--<ion-checkbox ng-model="todo.complete"">완료</ion-checkbox>-->
+    </div>
+    <div class="padding">
+      <button class="button button-block button-positive" ng-click="save()">저장</button>
+    </div>
   </ion-content>
 </ion-view>

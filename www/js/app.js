@@ -22,30 +22,15 @@ angular.module('mytodos', ['ionic'])
 })
 
 .controller('ListCtrl', function($scope) {
-  $scope.todos = [
-    {
-      id: 1,
-      title: 'title1',
-      description: 'description',
-      complete: false
-    },
-    {
-      id: 2,
-      title: 'title2',
-      description: 'description',
-      complete: false
-    },
-    {
-      id: 3,
-      title: 'title3',
-      description: 'description',
-      complete: false
-    }
-  ];
+  $scope.todos = todos;
 })
 
 .controller('EditCtrl', function($scope, $state) {
-  $scope.todoId = $state.params.todoId;
+  $scope.todo = getTodo($state.params.todoId); // call by reference
+  // $scope.todo = angular.copy(getTodo($state.params.todoId));
+
+  // $scope.save = function() {
+  // };
 })
 
 .run(function($ionicPlatform) {
