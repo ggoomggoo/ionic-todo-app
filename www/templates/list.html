@@ -1,16 +1,24 @@
 <ion-view view-title="List" ng-controller="ListCtrl">
   <ion-content>
-    <ion-list>
+    <ion-list show-reorder="reorder">
       <ion-item class="item-remove-animate item-icon-right" href="#/edit/{{todo.id}}" ng-repeat="todo in todos">
         <h2>{{todo.title}}</h2>
         <p>{{todo.description}}</p>
+        <!---->
         <i ng-if="!todo.complete" class="icon ion-android-checkbox-outline-blank"></i>
         <i ng-if="todo.complete" class="icon ion-android-checkbox-outline"></i>
+        <!---->
+        <!---->
+        <ion-reorder-button class="ion-drag" on-reorder="move(todo, $fromIndex, $toIndex)"></ion-reorder-button>
+        <!---->
+        <!---->
         <ion-options-button class="button-positive ion-trash-a" ng-click="remove(todo.id)">삭제</ion-options-button>
+        <!---->
       </ion-item>
     </ion-list>
   </ion-content>
   <div class="bar bar-footer bar-stable">
     <a href="#/add" class="button button-calm icon-left ion-compose">새로운 할 일</a>
+    <button class="button button-assertive icon-left ion-shuffle" ng-click="toggleReorder()">정렬</button>
   </div>
 </ion-view>

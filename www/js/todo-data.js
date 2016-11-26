@@ -42,6 +42,12 @@ angular.module('mytodos.todo-data', [])
           return;
         }
       }
+    },
+    move: function(todo, fromIndex, toIndex) {
+      todos.splice(fromIndex, 1);
+      todos.splice(toIndex, 0, todo);
+      saveToStorage();
+      return;
     }
   }
 });
