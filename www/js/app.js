@@ -44,6 +44,10 @@ angular.module('mytodos', ['ionic'])
   ];
 })
 
+.controller('EditCtrl', function($scope, $state) {
+  $scope.todoId = $state.params.todoId;
+})
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
