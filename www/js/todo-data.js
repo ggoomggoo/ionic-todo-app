@@ -33,6 +33,15 @@ angular.module('mytodos.todo-data', [])
     create: function(todo) {
       todos.push(todo);
       saveToStorage();
+    },
+    remove: function(todoId) {
+      for (var i = 0; i < todos.length; i++) {
+        if (todos[i].id === todoId) {
+          todos.splice(i, 1); // params; 0: 시작 인덱스, 1: 삭제 개수, 3: 추가 배열
+          saveToStorage();
+          return;
+        }
+      }
     }
   }
 });

@@ -30,6 +30,11 @@ angular.module('mytodos', ['ionic', 'mytodos.todo-data'])
 
 .controller('ListCtrl', function($scope, TodoData) {
   $scope.todos = TodoData.list();
+
+  $scope.delete = function(todoId) {
+    TodoData.remove(todoId);
+    $state.go('list');
+  }
 })
 
 .controller('AddCtrl', function($scope, $state, TodoData) {

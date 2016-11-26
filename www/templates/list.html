@@ -1,13 +1,12 @@
 <ion-view view-title="List" ng-controller="ListCtrl">
   <ion-content>
-    <div class="list">
-      <div class="item" ng-repeat="todo in todos">
-        <a href="#/edit/{{todo.id}}">
-          <h2>{{todo.title}}</h2>
-          <p>{{todo.description}}, {{todo.complete}}</p>
-        </a>
-      </div>
-    </div>
+    <ion-list>
+      <ion-item class="item-remove-animate" href="#/edit/{{todo.id}}" ng-repeat="todo in todos">
+        <h2>{{todo.title}}</h2>
+        <p>{{todo.description}}, {{todo.complete}}</p>
+        <ion-options-button class="button-positive ion-trash-a" ng-click="remove(todo.id)">삭제</ion-options-button>
+      </ion-item>
+    </ion-list>
   </ion-content>
   <div class="bar bar-footer bar-stable">
     <a href="#/add" class="button button-calm icon-left ion-compose">새로운 할 일</a>
