@@ -1,7 +1,12 @@
 angular.module('mytodos.todo-data', [])
 .factory('TodoData', function() {
 
-  var todos = [];
+  var todos = angular.fromJson(window.localStorage['todo'] || '[]');
+
+  // private method ?
+  function saveToStorage() {
+    window.localStorage['todo'] = angular.toJson(todos);
+  }
 
   // functions
   return {
@@ -20,12 +25,14 @@ angular.module('mytodos.todo-data', [])
       for (var i = 0; i < todos.length; i++) {
         if (todos[i].id === todo.id) {
           todos[i] = todo;
+          saveToStorage();
           return;
         }
       }
     },
     create: function(todo) {
       todos.push(todo);
+      saveToStorage();
     }
   }
 });
