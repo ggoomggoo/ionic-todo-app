@@ -36,3 +36,7 @@ function updateTodo(todo) {
     }
   }
 };
+
+function createTodo(todo) {
+  todos.push(todo);
+};

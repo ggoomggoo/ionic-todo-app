@@ -12,6 +12,12 @@ angular.module('mytodos', ['ionic'])
     templateUrl: 'templates/list.html'
   });
 
+  $stateProvider.state('add', {
+    url: '/add',
+    templateUrl: 'templates/edit.html', // edit.html 재활용
+    controller: 'AddCtrl'
+  });
+
   $stateProvider.state('edit', {
     url: '/edit/:todoId',
     templateUrl: 'templates/edit.html',
@@ -24,6 +30,20 @@ angular.module('mytodos', ['ionic'])
 
 .controller('ListCtrl', function($scope) {
   $scope.todos = todos;
+})
+
+.controller('AddCtrl', function($scope, $state) {
+  $scope.todo = {
+    id: new Date().getTime().toString(),
+    title: '',
+    description: '',
+    complete: false
+  };
+
+  $scope.save = function() {
+    createTodo($scope.todo);
+    $state.go('list');
+  }
 })
 
 .controller('EditCtrl', function($scope, $state) {
